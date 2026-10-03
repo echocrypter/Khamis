@@ -1,0 +1,314 @@
+/* ==========================================================================
+   KHAMIS HAUTE COUTURE & ARCHITECTURAL TAILORING - CORE DESIGN SYSTEM
+   High Legibility, Ultra-Clear Typography, High Contrast
+   ========================================================================== */
+
+:root {
+  --color-alabaster: #F6F5F2;
+  --color-ecru: #EFECE6;
+  --color-warm-white: #FAF9F6;
+  --color-onyx: #111113;
+  --color-carbon: #1B1B1E;
+  --color-charcoal: #252528;
+  --color-stone-gray: #5F5E5B; /* Darker for high contrast readability */
+  --color-soft-border: #D8D4CA; /* More defined border */
+  --color-dark-border: rgba(255, 255, 255, 0.18);
+  --color-gold-accent: #B8860B;
+  --color-gold-light: #F0DFC0;
+  
+  /* Primary Luxury Fonts: Cinzel & Montserrat with strong stem definitions */
+  --font-serif: 'Cinzel', 'Playfair Display', Georgia, serif;
+  --font-sans: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  
+  --ease-editorial: cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-slow: 0.6s var(--ease-editorial);
+  --transition-normal: 0.3s var(--ease-editorial);
+  --transition-fast: 0.18s ease;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body.luxury-body {
+  font-family: var(--font-sans);
+  background-color: var(--color-alabaster);
+  color: var(--color-onyx);
+  min-height: 100vh;
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+  font-weight: 500; /* Crisp baseline weight so no words are faded */
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background-color: var(--color-onyx);
+  color: var(--color-alabaster);
+}
+
+/* --------------------------------------------------------------------------
+   Typography Utilities - Clear, Legible, High-Contrast
+   -------------------------------------------------------------------------- */
+.font-serif {
+  font-family: var(--font-serif);
+  letter-spacing: 0.06em;
+}
+
+.font-sans {
+  font-family: var(--font-sans);
+}
+
+.tracking-ultra {
+  letter-spacing: 0.22em;
+}
+
+.tracking-monumental {
+  letter-spacing: 0.18em;
+}
+
+.tracking-widest {
+  letter-spacing: 0.14em;
+}
+
+.tracking-wider {
+  letter-spacing: 0.1em;
+}
+
+.tracking-wide {
+  letter-spacing: 0.04em;
+}
+
+/* Monumental Hero Headline Typography */
+.hero-monumental-text {
+  font-family: var(--font-serif);
+  font-size: clamp(3rem, 12vw, 9rem);
+  line-height: 0.9;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-onyx);
+}
+
+/* Fine Hairline Divider */
+.fine-hairline {
+  height: 1px;
+  background: linear-gradient(90deg, rgba(17,17,19,0.3) 0%, rgba(17,17,19,0.08) 100%);
+}
+
+.fine-hairline-dark {
+  height: 1px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.06) 100%);
+}
+
+/* --------------------------------------------------------------------------
+   Luxury Interactive Underlines & Buttons
+   -------------------------------------------------------------------------- */
+.luxury-link {
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+  color: inherit;
+  font-weight: 600;
+  transition: color var(--transition-normal);
+  cursor: pointer;
+}
+
+.luxury-link::after {
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 1.5px;
+  bottom: -3px;
+  left: 0;
+  background-color: currentColor;
+  transition: width var(--transition-normal);
+}
+
+.luxury-link:hover::after,
+.luxury-link.active::after {
+  width: 100%;
+}
+
+.btn-luxury-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 32px;
+  background-color: var(--color-onyx);
+  color: #FFFFFF;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  border: 1px solid var(--color-onyx);
+  border-radius: 0;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  text-decoration: none;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+}
+
+.btn-luxury-primary:hover {
+  background-color: #000000;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  transform: translateY(-1px);
+}
+
+.btn-luxury-primary:active {
+  transform: translateY(0);
+}
+
+.btn-luxury-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 32px;
+  background-color: #FFFFFF;
+  color: var(--color-onyx);
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  border: 1.5px solid var(--color-onyx);
+  border-radius: 0;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  text-decoration: none;
+}
+
+.btn-luxury-secondary:hover {
+  background-color: var(--color-onyx);
+  color: #FFFFFF;
+}
+
+.btn-luxury-white {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 32px;
+  background-color: #FFFFFF;
+  color: var(--color-onyx);
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  border: 1px solid #FFFFFF;
+  border-radius: 0;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  text-decoration: none;
+}
+
+.btn-luxury-white:hover {
+  background-color: var(--color-alabaster);
+  color: #000;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* --------------------------------------------------------------------------
+   Container & Layout Utilities
+   -------------------------------------------------------------------------- */
+.luxury-container {
+  width: 100%;
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+@media (min-width: 640px) {
+  .luxury-container {
+    padding-left: 36px;
+    padding-right: 36px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .luxury-container {
+    padding-left: 56px;
+    padding-right: 56px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Responsive Utilities
+   -------------------------------------------------------------------------- */
+.hide-on-mobile {
+  display: none !important;
+}
+
+@media (min-width: 1024px) {
+  .hide-on-mobile {
+    display: flex !important;
+  }
+}
+
+.show-on-mobile {
+  display: flex !important;
+}
+
+@media (min-width: 1024px) {
+  .show-on-mobile {
+    display: none !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Image Hover & Zoom Transitions
+   -------------------------------------------------------------------------- */
+.editorial-img-container {
+  position: relative;
+  overflow: hidden;
+  background-color: #E6E2DA;
+}
+
+.editorial-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow), filter var(--transition-slow);
+}
+
+.editorial-img-container:hover .editorial-img {
+  transform: scale(1.04);
+}
+
+.grayscale-hover {
+  filter: contrast(105%);
+}
+
+/* --------------------------------------------------------------------------
+   Custom Scrollbar
+   -------------------------------------------------------------------------- */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-alabaster);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #A09E97;
+  border-radius: 0;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-onyx);
+}

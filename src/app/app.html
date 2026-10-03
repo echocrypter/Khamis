@@ -1,0 +1,1256 @@
+<!-- ==========================================================================
+     KHAMIS HAUTE COUTURE - EDITORIAL LUXURY WEB EXPERIENCE
+     High-Legibility Luxury Typography • Local High-Definition Assets
+     Pure English Language • Fully Responsive (Mobile, Tablet, Desktop)
+     ========================================================================== -->
+
+<div class="khamis-app-wrapper">
+
+  <!-- ========================================================================
+       1. PRIMARY STICKY NAVIGATION
+       ======================================================================== -->
+  <header class="main-header" [class.header-scrolled]="true">
+    <div class="header-inner luxury-container">
+
+      <!-- Left: Mobile Menu Toggle & Desktop Navigation -->
+      <div class="nav-left">
+        <!-- Hamburger Button for Mobile & Tablet -->
+        <button type="button" class="mobile-menu-btn" (click)="openMobileMenu()" aria-label="Open Navigation Menu">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+
+        <!-- Desktop Category Links -->
+        <nav class="desktop-nav" aria-label="Main Navigation">
+          <button type="button" class="nav-item luxury-link" [class.active]="selectedCategory() === 'men'" (click)="setCategory('men')">
+            Men
+          </button>
+          <button type="button" class="nav-item luxury-link" [class.active]="selectedCategory() === 'women'" (click)="setCategory('women')">
+            Women
+          </button>
+          <button type="button" class="nav-item luxury-link" [class.active]="selectedCategory() === 'leather-goods'" (click)="setCategory('leather-goods')">
+            Leather Goods
+          </button>
+          <button type="button" class="nav-item luxury-link" [class.active]="selectedCategory() === 'high-jewelry'" (click)="setCategory('high-jewelry')">
+            High Jewelry
+          </button>
+          <button type="button" class="nav-item luxury-link" [class.active]="selectedCategory() === 'all'" (click)="setCategory('all')">
+            All Collections
+          </button>
+        </nav>
+      </div>
+
+      <!-- Center: Monumental Brand Identity -->
+      <div class="nav-center">
+        <a href="#" class="brand-link" (click)="setCategory('all'); $event.preventDefault()">
+          <span class="brand-title font-serif">KHAMIS</span>
+          <span class="brand-subtitle">Haute Couture</span>
+        </a>
+      </div>
+
+      <!-- Right: Utility Actions (Search, Wishlist, Cart) -->
+      <div class="nav-right">
+        <!-- Search Trigger -->
+        <button type="button" class="action-btn search-trigger" (click)="openSearch()" aria-label="Search Collection">
+          <svg class="icon-svg" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <circle cx="11" cy="11" r="8" stroke-width="2"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65" stroke-width="2"></line>
+          </svg>
+          <span class="action-label hide-on-mobile">Search</span>
+        </button>
+
+        <!-- Private Fitting Trigger (Desktop/Tablet) -->
+        <button type="button" class="action-btn hide-on-mobile" (click)="openFittingModal()" aria-label="Book Private Fitting">
+          <svg class="icon-svg" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-width="2" d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4" stroke-width="2"></circle>
+          </svg>
+          <span class="action-label">Salon</span>
+        </button>
+
+        <!-- Wishlist Trigger -->
+        <button type="button" class="action-btn wishlist-btn" (click)="setCategory('all')" title="View Wishlist" aria-label="Wishlist">
+          <svg class="icon-svg" [class.filled]="wishlist().length > 0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-width="2" d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+          </svg>
+          <span class="badge-count">({{ wishlist().length }})</span>
+        </button>
+
+        <!-- Shopping Bag Trigger -->
+        <button type="button" class="action-btn cart-trigger" (click)="openCart()" aria-label="Shopping Bag">
+          <svg class="icon-svg" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-width="2" d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-2z"></path>
+            <line x1="3" y1="6" x2="21" y2="6" stroke-width="2"></line>
+            <path stroke-width="2" d="M16 10a4 4 0 0 1-8 0"></path>
+          </svg>
+          <span class="action-label hide-on-mobile">Bag</span>
+          <span class="badge-count">({{ cartCount() }})</span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ========================================================================
+       2. HERO SECTION (REFERENCE MATCH TO STITCH DESIGN)
+       ======================================================================== -->
+  <main>
+    <section class="hero-section" aria-label="Editorial Hero Campaign">
+
+      <!-- Top Micro-Annotations -->
+      <div class="hero-header-annotation luxury-container">
+        <div class="annotation-left">
+          <p class="tag-primary font-serif">Autumn / Winter 2025 Edition</p>
+          <p class="tag-secondary">Shaped by Architectural Tailoring &amp; Kinetic Form</p>
+        </div>
+        <div class="annotation-right hide-on-mobile">
+          <p class="tag-look font-serif">Central Atelier &bull; Look No. 01</p>
+        </div>
+      </div>
+
+      <!-- Monumental Visual Stage Container -->
+      <div class="hero-stage-outer luxury-container">
+        <div class="hero-stage-card">
+
+          <!-- Background Image Asset: Walking model with monumental studio typography -->
+          <div class="hero-stage-media">
+            <img
+              src="assets/images/pic.jpeg"
+              alt="KHAMIS Editorial Campaign - High fashion model in architectural tailored overcoat walking dynamically across minimalist studio with monumental KHAMIS backdrop"
+              class="hero-media-img"
+              loading="eager"
+            />
+            <div class="hero-stage-overlay"></div>
+          </div>
+
+          <!-- Bottom-Left Action Controls -->
+          <div class="hero-actions-container">
+            <a href="#collection-catalog" class="btn-luxury-primary hero-btn" (click)="setCategory('all', true)">
+              Shop Now
+            </a>
+            <button type="button" class="hero-ghost-btn" (click)="openFittingModal()">
+              Private Fitting Service &rarr;
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Hero Subtext 3-Pillar Strip -->
+      <div class="hero-pillars-strip luxury-container">
+        <div class="pillar-item">
+          <span class="pillar-num font-serif">01.</span>
+          <p class="pillar-text">Bespoke Japanese wools, sculpted double-faced cashmere, and raw silk faille.</p>
+        </div>
+        <div class="pillar-item">
+          <span class="pillar-num font-serif">02.</span>
+          <p class="pillar-text">Monolithic silhouettes tailored with fluid drape and architectural precision.</p>
+        </div>
+        <div class="pillar-item">
+          <span class="pillar-num font-serif">03.</span>
+          <p class="pillar-text">Limited production numbered pieces hand-crafted in Paris and Geneva ateliers.</p>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ========================================================================
+         4. CURATED SIGNATURE DIVISIONS (3-COLUMN DARK STRIP)
+         ======================================================================== -->
+    <section class="divisions-section" aria-label="Curated Signature Divisions">
+      <div class="luxury-container">
+
+        <!-- Section Header -->
+        <div class="divisions-header">
+          <span class="section-kicker font-serif">Signature Divisions</span>
+          <button type="button" class="view-all-link luxury-link" (click)="setCategory('all', true)">
+            Explore All Lines &rarr;
+          </button>
+        </div>
+
+        <!-- 3-Pillar Responsive Grid -->
+        <div class="divisions-grid">
+
+          <!-- Division 1: Men -->
+          <article class="division-card" (click)="setCategory('men', true)">
+            <div class="division-thumbnail editorial-img-container">
+              <img
+                src="assets/images/men_trench.jpg"
+                alt="Men's Haute Couture Suiting and Architectural Overcoats"
+                class="division-img editorial-img"
+              />
+            </div>
+            <div class="division-info">
+              <span class="division-index font-serif">Division 01</span>
+              <h3 class="division-title font-serif">Men</h3>
+              <p class="division-desc">Sculptural tailoring, high-collar overcoats, and archival suiting.</p>
+              <span class="division-cta">Shop Men &rarr;</span>
+            </div>
+          </article>
+
+          <!-- Division 2: Women -->
+          <article class="division-card" (click)="setCategory('women', true)">
+            <div class="division-thumbnail editorial-img-container">
+              <img
+                src="assets/images/women_gown.jpg"
+                alt="Women's Draped Silk Eveningwear and Sculptural Silhouette"
+                class="division-img editorial-img"
+              />
+            </div>
+            <div class="division-info">
+              <span class="division-index font-serif">Division 02</span>
+              <h3 class="division-title font-serif">Women</h3>
+              <p class="division-desc">Draped faille silks, asymmetric evening capes, and fluid volume.</p>
+              <span class="division-cta">Shop Women &rarr;</span>
+            </div>
+          </article>
+
+          <!-- Division 3: Leather Goods & Objects -->
+          <article class="division-card" (click)="setCategory('leather-goods', true)">
+            <div class="division-thumbnail editorial-img-container">
+              <img
+                src="assets/images/leather_plisse.jpg"
+                alt="Artisan Leather Goods and Sculptural Handbags"
+                class="division-img editorial-img"
+              />
+            </div>
+            <div class="division-info">
+              <span class="division-index font-serif">Division 03</span>
+              <h3 class="division-title font-serif">Leather Goods</h3>
+              <p class="division-desc">Hand-pleated calfskin, sculptural vessels, and artisan leather goods.</p>
+              <span class="division-cta">Shop Leather &rarr;</span>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         5. ARCHITECTURAL SPOTLIGHT / EDITORIAL FEATURE
+         ======================================================================== -->
+    <section class="spotlight-section" aria-label="Editorial Spotlight">
+      <div class="luxury-container">
+        <div class="spotlight-grid">
+
+          <!-- Left Editorial Narrative -->
+          <div class="spotlight-copy">
+            <div class="spotlight-badge">
+              <span class="badge-dot"></span>
+              <span class="badge-text font-serif">Architectural Series 2025</span>
+            </div>
+            <h2 class="spotlight-title font-serif">
+              Pure Form.<br>
+              <span class="font-italic-light">Sublime Silence.</span>
+            </h2>
+            <p class="spotlight-p">
+              Crafted in collaboration with heritage master artisans in Piedmont and Geneva, each silhouette interrogates traditional tailoring through the lens of brutalist architecture and clean kinetic draping.
+            </p>
+            <p class="spotlight-p-sub">
+              By removing excess seams and constructing volumes from unbroken rolls of Japanese wool faille, garments float around the body with monumental presence.
+            </p>
+            <div class="spotlight-ctas">
+              <button type="button" class="btn-luxury-primary" (click)="setCategory('all', true)">
+                Explore Curated Edit
+              </button>
+              <button type="button" class="manifesto-trigger luxury-link" (click)="openManifesto()">
+                Read The Manifesto &rarr;
+              </button>
+            </div>
+          </div>
+
+          <!-- Right Feature Imagery -->
+          <div class="spotlight-media">
+            <div class="spotlight-img-frame editorial-img-container">
+              <img
+                src="assets/images/brand_hero_full.png"
+                alt="Brutalist daylight study showing draped evening cape"
+                class="spotlight-img editorial-img"
+              />
+              <div class="media-annotation-tag font-serif">
+                <span>Pavilion No. 04 &bull; Brutalist Daylight Study</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         6. INTERACTIVE PRODUCT CATALOG & LOOKBOOK
+         ======================================================================== -->
+    <section id="collection-catalog" class="catalog-section" aria-label="Haute Couture Collection Catalog">
+      <div class="luxury-container">
+
+        <!-- Catalog Header & Controls -->
+        <div class="catalog-header-wrap">
+          <div class="catalog-title-group">
+            <span class="section-kicker font-serif">Lookbook &bull; Ready-to-Wear</span>
+            <h2 class="catalog-headline font-serif">Curated Masterpieces</h2>
+          </div>
+
+          <!-- Filter & Sort Bar -->
+          <div class="catalog-controls">
+            <!-- Category Filter Pills -->
+            <div class="category-pills">
+              <button
+                type="button"
+                class="pill-btn font-serif"
+                [class.active]="selectedCategory() === 'all'"
+                (click)="setCategory('all', false)">
+                All Pieces
+              </button>
+              <button
+                type="button"
+                class="pill-btn font-serif"
+                [class.active]="selectedCategory() === 'men'"
+                (click)="setCategory('men', false)">
+                Men
+              </button>
+              <button
+                type="button"
+                class="pill-btn font-serif"
+                [class.active]="selectedCategory() === 'women'"
+                (click)="setCategory('women', false)">
+                Women
+              </button>
+              <button
+                type="button"
+                class="pill-btn font-serif"
+                [class.active]="selectedCategory() === 'leather-goods'"
+                (click)="setCategory('leather-goods', false)">
+                Leather Goods
+              </button>
+              <button
+                type="button"
+                class="pill-btn font-serif"
+                [class.active]="selectedCategory() === 'high-jewelry'"
+                (click)="setCategory('high-jewelry', false)">
+                High Jewelry
+              </button>
+            </div>
+
+            <!-- Sorting Select -->
+            <div class="sort-selector">
+              <label for="catalogSort" class="sort-label font-serif">Sort By:</label>
+              <select
+                id="catalogSort"
+                class="sort-dropdown"
+                [ngModel]="sortOption()"
+                (ngModelChange)="sortOption.set($event)">
+                <option value="featured">Atelier Curation</option>
+                <option value="newest">New Editions</option>
+                <option value="price-low">Price: Low to High</option>
+                <option value="price-high">Price: High to Low</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product Cards Grid -->
+        <div class="product-grid">
+          @for (product of filteredProducts(); track product.id) {
+            <article class="product-card group" (click)="openQuickView(product)">
+
+              <!-- Card Media Container -->
+              <div class="product-media-wrapper editorial-img-container">
+                <img
+                  [src]="product.imageUrl"
+                  [alt]="product.name"
+                  class="product-card-img editorial-img"
+                  loading="lazy"
+                />
+
+                <!-- Top Badge -->
+                @if (product.badge) {
+                  <span class="product-badge font-serif">{{ product.badge }}</span>
+                }
+
+                <!-- Wishlist Toggle Button -->
+                <button
+                  type="button"
+                  class="card-wishlist-btn"
+                  [class.active]="isInWishlist(product.id)"
+                  (click)="toggleWishlist(product, $event)"
+                  aria-label="Save to Wishlist"
+                  title="Toggle Wishlist">
+                  <svg class="heart-icon" [class.filled]="isInWishlist(product.id)" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-width="2" d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                  </svg>
+                </button>
+
+                <!-- Quick Action Overlays -->
+                <div class="card-quick-actions">
+                  <button
+                    type="button"
+                    class="quick-action-btn quick-view-trigger"
+                    (click)="openQuickView(product, $event)">
+                    Quick View
+                  </button>
+                  <button
+                    type="button"
+                    class="quick-action-btn add-to-bag-trigger"
+                    (click)="addToCart(product, undefined, undefined, 1, $event)">
+                    + Add To Bag
+                  </button>
+                </div>
+              </div>
+
+              <!-- Card Details -->
+              <div class="product-info-wrap">
+                <div class="product-meta-row">
+                  <span class="product-division-tag font-serif">{{ product.categoryLabel }}</span>
+                  <span class="product-edition-tag font-serif">{{ product.edition }}</span>
+                </div>
+                <h3 class="product-name font-serif">{{ product.name }}</h3>
+                <p class="product-material-snippet">{{ product.material }}</p>
+
+                <!-- Pricing & Color Indicators -->
+                <div class="product-bottom-row">
+                  <div class="price-container">
+                    <span class="product-price">{{ formatPrice(product.price) }}</span>
+                    @if (product.originalPrice) {
+                      <span class="product-original-price">{{ formatPrice(product.originalPrice) }}</span>
+                    }
+                  </div>
+                  <div class="swatches-wrap" aria-label="Available Colors">
+                    @for (col of product.colors; track col.name) {
+                      <span
+                        class="color-dot"
+                        [style.background-color]="col.hex"
+                        [title]="col.name">
+                      </span>
+                    }
+                  </div>
+                </div>
+              </div>
+
+            </article>
+          } @empty {
+            <div class="empty-results-box">
+              <p class="font-serif empty-title">No pieces match your filter</p>
+              <p class="empty-sub">Explore other divisions or reset your search query.</p>
+              <button type="button" class="btn-luxury-secondary mt-4" (click)="selectedCategory.set('all'); searchQuery.set('')">
+                Reset Filters
+              </button>
+            </div>
+          }
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         7. LUXURY SERVICE TRUST PILLARS (GAZU REFERENCE)
+         ======================================================================== -->
+    <section class="trust-pillars-section" aria-label="Atelier Guarantees">
+      <div class="luxury-container">
+        <div class="trust-grid">
+
+          <!-- Trust Item 1 -->
+          <div class="trust-item">
+            <svg class="trust-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <rect x="1" y="3" width="15" height="13" stroke-width="1.8"></rect>
+              <polygon points="16 8 20 8 23 11 23 16 16 16 16 8" stroke-width="1.8"></polygon>
+              <circle cx="5.5" cy="18.5" r="2.5" stroke-width="1.8"></circle>
+              <circle cx="18.5" cy="18.5" r="2.5" stroke-width="1.8"></circle>
+            </svg>
+            <div class="trust-content">
+              <h4 class="trust-title font-serif">White Glove Delivery</h4>
+              <p class="trust-desc">Complimentary climate-controlled courier for orders above $200</p>
+            </div>
+          </div>
+
+          <!-- Trust Item 2 -->
+          <div class="trust-item">
+            <svg class="trust-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <polyline points="23 4 23 10 17 10" stroke-width="1.8"></polyline>
+              <path stroke-width="1.8" d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
+            </svg>
+            <div class="trust-content">
+              <h4 class="trust-title font-serif">Private Salon Returns</h4>
+              <p class="trust-desc">30-day atelier collection &amp; complimentary alterations</p>
+            </div>
+          </div>
+
+          <!-- Trust Item 3 -->
+          <div class="trust-item">
+            <svg class="trust-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <circle cx="12" cy="8" r="7" stroke-width="1.8"></circle>
+              <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88" stroke-width="1.8"></polyline>
+            </svg>
+            <div class="trust-content">
+              <h4 class="trust-title font-serif">Artisan Certification</h4>
+              <p class="trust-desc">Each garment ships with an individually numbered archive certificate</p>
+            </div>
+          </div>
+
+          <!-- Trust Item 4 -->
+          <div class="trust-item">
+            <svg class="trust-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2" stroke-width="1.8"></rect>
+              <path stroke-width="1.8" d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+            </svg>
+            <div class="trust-content">
+              <h4 class="trust-title font-serif">Encrypted Checkout</h4>
+              <p class="trust-desc">Private client vault-level transaction encryption &amp; anonymity</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================================================
+       8. LUXURY FOOTER (PURE ENGLISH, NO REAL PHONE OR ADDRESS)
+       ======================================================================== -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="luxury-container">
+
+      <!-- Main Footer Grid -->
+      <div class="footer-top-grid">
+
+        <!-- Brand Identity & Mission -->
+        <div class="footer-brand-col">
+          <span class="footer-logo font-serif">KHAMIS</span>
+          <p class="footer-summary">
+            Haute Couture and sculptural ready-to-wear tailored through architectural rigor. Preserving centuries of traditional European hand-craftsmanship through contemporary brutalist expressions.
+          </p>
+          <div class="atelier-cities font-serif">
+            <span>Paris</span>
+            <span class="city-sep">&bull;</span>
+            <span>Geneva</span>
+            <span class="city-sep">&bull;</span>
+            <span>Tokyo</span>
+            <span class="city-sep">&bull;</span>
+            <span>New York</span>
+          </div>
+          <div class="contact-notice">
+            <p class="contact-line">Private Concierge: <a href="mailto:concierge@khamis-couture.example" class="contact-email">concierge@khamis-couture.example</a></p>
+            <p class="contact-line">Press &amp; Archives: <a href="mailto:press@khamis-couture.example" class="contact-email">press@khamis-couture.example</a></p>
+          </div>
+        </div>
+
+        <!-- Collections Column -->
+        <div class="footer-col">
+          <h5 class="footer-heading font-serif">Collections</h5>
+          <ul class="footer-links">
+            <li><button type="button" class="footer-btn-link" (click)="setCategory('all', true)">Autumn / Winter 2025</button></li>
+            <li><button type="button" class="footer-btn-link" (click)="setCategory('men', true)">Sculptural Men's Tailoring</button></li>
+            <li><button type="button" class="footer-btn-link" (click)="setCategory('women', true)">Asymmetric Women's Eveningwear</button></li>
+            <li><button type="button" class="footer-btn-link" (click)="setCategory('leather-goods', true)">Plisse Leather Goods</button></li>
+            <li><button type="button" class="footer-btn-link" (click)="setCategory('high-jewelry', true)">Architectural Gold Jewelry</button></li>
+          </ul>
+        </div>
+
+        <!-- Maison & Service Column -->
+        <div class="footer-col">
+          <h5 class="footer-heading font-serif">Maison</h5>
+          <ul class="footer-links">
+            <li><button type="button" class="footer-btn-link" (click)="openManifesto()">The Atelier Manifesto</button></li>
+            <li><button type="button" class="footer-btn-link" (click)="openFittingModal()">Book Private Fitting</button></li>
+            <li><button type="button" class="footer-btn-link" (click)="showToast('Care & Preservation monograph downloaded.')">Garment Care &amp; Preservation</button></li>
+            <li><button type="button" class="footer-btn-link" (click)="showToast('Sustainability & Provenance charter opened.')">Ethical Sourcing &amp; Provenance</button></li>
+            <li><button type="button" class="footer-btn-link" (click)="openManifesto()">Historical Archives</button></li>
+          </ul>
+        </div>
+
+        <!-- Private Correspondence Newsletter Form -->
+        <div class="footer-col footer-newsletter-col">
+          <h5 class="footer-heading font-serif">Private Correspondence</h5>
+          <p class="newsletter-desc">
+            Receive private salon invitations, numbered release previews, and atelier monograph journals directly to your confidential inbox.
+          </p>
+          <form class="newsletter-form" (ngSubmit)="submitNewsletter()">
+            <div class="newsletter-input-group">
+              <input
+                type="email"
+                name="newsletterEmail"
+                [(ngModel)]="newsletterEmail"
+                placeholder="YOUR EMAIL ADDRESS"
+                required
+                class="newsletter-input"
+                aria-label="Email address for private correspondence"
+              />
+              <button type="submit" class="newsletter-submit-btn font-serif">
+                Subscribe
+              </button>
+            </div>
+            @if (newsletterSubmitted()) {
+              <p class="newsletter-success-msg">
+                &check; Invitation registered. Welcome to KHAMIS Private Client circle.
+              </p>
+            }
+          </form>
+          <div class="payment-badges-row">
+            <span class="pay-pill font-serif">Encrypted Vault</span>
+            <span class="pay-pill font-serif">Concierge Dispatch</span>
+            <span class="pay-pill font-serif">Carbon Neutral</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bottom Bar with Legal and Copyright -->
+      <div class="footer-bottom-bar">
+        <div class="copyright-text font-serif">
+          &copy; 2025 KHAMIS HAUTE COUTURE. ALL RIGHTS RESERVED.
+        </div>
+        <div class="footer-legal-links">
+          <button type="button" class="legal-btn" (click)="showToast('Privacy Policy: All client data is confidential and never shared.')">Privacy Policy</button>
+          <span class="legal-sep">&bull;</span>
+          <button type="button" class="legal-btn" (click)="showToast('Terms of Service: All haute couture pieces are made in numbered editions.')">Terms of Service</button>
+          <span class="legal-sep">&bull;</span>
+          <button type="button" class="legal-btn" (click)="showToast('Legal Mentions: KHAMIS Luxury Design Atelier.')">Legal Mentions</button>
+          <span class="legal-sep">&bull;</span>
+          <button type="button" class="legal-btn" (click)="showToast('Cookie Preferences: Essential cookies only.')">Cookies</button>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ========================================================================
+       MODAL 1: SLIDE-OUT CART DRAWER
+       ======================================================================== -->
+  @if (isCartOpen()) {
+    <div class="drawer-backdrop" (click)="closeCart()">
+      <div class="cart-drawer-panel" (click)="$event.stopPropagation()" role="dialog" aria-modal="true" aria-label="Shopping Bag">
+
+        <!-- Drawer Header -->
+        <div class="drawer-header">
+          <div class="drawer-title-group">
+            <h3 class="drawer-title font-serif">Shopping Bag</h3>
+            <span class="drawer-count font-serif">({{ cartCount() }} {{ cartCount() === 1 ? 'Piece' : 'Pieces' }})</span>
+          </div>
+          <button type="button" class="drawer-close-btn" (click)="closeCart()" aria-label="Close Shopping Bag">
+            &times;
+          </button>
+        </div>
+
+        <!-- Free Shipping Progress Meter -->
+        <div class="shipping-meter-wrap">
+          <div class="meter-text-row">
+            @if (remainingForFreeShipping() > 0) {
+              <span>Add <strong>{{ formatPrice(remainingForFreeShipping()) }}</strong> more for complimentary courier</span>
+            } @else {
+              <span class="meter-unlocked">&check; Complimentary White-Glove Courier Unlocked</span>
+            }
+            <span class="meter-pct">{{ shippingProgress() }}%</span>
+          </div>
+          <div class="meter-track">
+            <div class="meter-fill" [style.width.%]="shippingProgress()"></div>
+          </div>
+        </div>
+
+        <!-- Drawer Body: Cart Items -->
+        <div class="drawer-items-list">
+          @for (item of cart(); track $index) {
+            <div class="cart-item-row">
+              <div class="cart-item-media">
+                <img [src]="item.product.imageUrl" [alt]="item.product.name" class="cart-item-img" />
+              </div>
+              <div class="cart-item-content">
+                <div class="cart-item-top">
+                  <h4 class="cart-item-name font-serif">{{ item.product.name }}</h4>
+                  <button type="button" class="cart-item-remove" (click)="removeFromCart($index)" title="Remove Piece">
+                    &times;
+                  </button>
+                </div>
+                <p class="cart-item-spec">Size: {{ item.selectedSize }} &bull; {{ item.selectedColor.name }}</p>
+                <div class="cart-item-bottom">
+                  <!-- Quantity stepper -->
+                  <div class="qty-stepper">
+                    <button type="button" class="qty-btn" (click)="updateQuantity($index, -1)" aria-label="Decrease quantity">-</button>
+                    <span class="qty-val">{{ item.quantity }}</span>
+                    <button type="button" class="qty-btn" (click)="updateQuantity($index, 1)" aria-label="Increase quantity">+</button>
+                  </div>
+                  <!-- Line price -->
+                  <span class="cart-item-price">{{ formatPrice(item.product.price * item.quantity) }}</span>
+                </div>
+              </div>
+            </div>
+          } @empty {
+            <div class="empty-cart-state">
+              <svg class="empty-cart-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-width="1.8" d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-2z"></path>
+                <line x1="3" y1="6" x2="21" y2="6" stroke-width="1.8"></line>
+                <path stroke-width="1.8" d="M16 10a4 4 0 0 1-8 0"></path>
+              </svg>
+              <p class="font-serif empty-cart-msg">Your shopping bag is currently empty.</p>
+              <button type="button" class="btn-luxury-primary mt-4" (click)="closeCart(); setCategory('all', true)">
+                Explore The Collection
+              </button>
+            </div>
+          }
+        </div>
+
+        <!-- Drawer Footer: Voucher, Totals & Checkout -->
+        @if (cart().length > 0) {
+          <div class="drawer-footer">
+            <!-- Promo Voucher Code -->
+            <div class="promo-code-wrap">
+              <div class="promo-input-row">
+                <input
+                  type="text"
+                  placeholder="ARCHIVE PRIVILEGE CODE"
+                  class="promo-input"
+                  [ngModel]="promoInput()"
+                  (ngModelChange)="promoInput.set($event)"
+                />
+                <button type="button" class="promo-apply-btn font-serif" (click)="applyPromo()">
+                  Apply
+                </button>
+              </div>
+              @if (promoFeedback()) {
+                <p class="promo-feedback-note" [class.success]="discountPercent() > 0">{{ promoFeedback() }}</p>
+              }
+              <p class="promo-hint">Try code <strong>KHAMIS10</strong> for 10% archival privilege.</p>
+            </div>
+
+            <!-- Financial Summary -->
+            <div class="drawer-summary-rows">
+              <div class="summary-line">
+                <span>Subtotal</span>
+                <span>{{ formatPrice(cartSubtotal()) }}</span>
+              </div>
+              @if (discountPercent() > 0) {
+                <div class="summary-line discount-line">
+                  <span>Privilege Courtesy ({{ discountPercent() }}%)</span>
+                  <span>-{{ formatPrice(cartDiscountAmount()) }}</span>
+                </div>
+              }
+              <div class="summary-line">
+                <span>White-Glove Courier</span>
+                <span class="delivery-free">Complimentary</span>
+              </div>
+              <div class="summary-line total-line">
+                <span class="total-label font-serif">Grand Total</span>
+                <span class="total-amount font-serif">{{ formatPrice(cartGrandTotal()) }}</span>
+              </div>
+            </div>
+
+            <!-- Checkout CTA -->
+            <button type="button" class="btn-luxury-primary checkout-btn font-serif" (click)="checkout()">
+              Proceed to Secure Checkout
+            </button>
+            <p class="checkout-assurance font-serif">
+              &bull; Vault-Encrypted Transaction &bull; 30-Day Atelier Collection
+            </p>
+          </div>
+        }
+
+      </div>
+    </div>
+  }
+
+  <!-- ========================================================================
+       MODAL 2: MOBILE & TABLET NAVIGATION DRAWER
+       ======================================================================== -->
+  @if (isMobileMenuOpen()) {
+    <div class="drawer-backdrop" (click)="closeMobileMenu()">
+      <div class="mobile-drawer-panel" (click)="$event.stopPropagation()" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
+
+        <!-- Mobile Drawer Header -->
+        <div class="mobile-drawer-header">
+          <span class="font-serif brand-mobile-title">KHAMIS</span>
+          <button type="button" class="drawer-close-btn" (click)="closeMobileMenu()" aria-label="Close Navigation">
+            &times;
+          </button>
+        </div>
+
+        <!-- Quick Search Bar inside Drawer -->
+        <div class="drawer-search-bar">
+          <input
+            type="text"
+            placeholder="Search collections &amp; materials..."
+            class="drawer-search-input"
+            [ngModel]="searchQuery()"
+            (ngModelChange)="searchQuery.set($event)"
+            (keyup.enter)="closeMobileMenu(); setCategory('all', true)"
+          />
+        </div>
+
+        <!-- Navigation Links -->
+        <nav class="mobile-drawer-nav">
+          <button type="button" class="mobile-nav-link font-serif" (click)="setCategory('all', true)">
+            <span>All Masterpieces</span>
+            <span class="mobile-link-badge">{{ allProducts().length }}</span>
+          </button>
+          <button type="button" class="mobile-nav-link font-serif" (click)="setCategory('men', true)">
+            <span>Men's Architectural Tailoring</span>
+            <span class="mobile-link-arrow">&rarr;</span>
+          </button>
+          <button type="button" class="mobile-nav-link font-serif" (click)="setCategory('women', true)">
+            <span>Women's Draped Silk Eveningwear</span>
+            <span class="mobile-link-arrow">&rarr;</span>
+          </button>
+          <button type="button" class="mobile-nav-link font-serif" (click)="setCategory('leather-goods', true)">
+            <span>Plisse Leather Goods</span>
+            <span class="mobile-link-arrow">&rarr;</span>
+          </button>
+          <button type="button" class="mobile-nav-link font-serif" (click)="setCategory('high-jewelry', true)">
+            <span>Hand-Forged High Jewelry</span>
+            <span class="mobile-link-arrow">&rarr;</span>
+          </button>
+        </nav>
+
+        <!-- Direct Actions in Drawer -->
+        <div class="mobile-drawer-actions">
+          <button type="button" class="btn-luxury-primary w-full font-serif" (click)="closeMobileMenu(); openFittingModal()">
+            Book Private Salon Fitting
+          </button>
+          <button type="button" class="btn-luxury-secondary w-full mt-2 font-serif" (click)="closeMobileMenu(); openManifesto()">
+            Read Atelier Manifesto
+          </button>
+        </div>
+
+        <!-- Mobile Drawer Footer with Currency Switcher -->
+        <div class="mobile-drawer-footer">
+          <p class="drawer-footer-label font-serif">Currency Selection</p>
+          <div class="mobile-currency-row">
+            <button type="button" class="mobile-curr-btn" [class.active]="selectedCurrency() === 'USD'" (click)="setCurrency('USD')">USD ($)</button>
+            <button type="button" class="mobile-curr-btn" [class.active]="selectedCurrency() === 'EUR'" (click)="setCurrency('EUR')">EUR (€)</button>
+            <button type="button" class="mobile-curr-btn" [class.active]="selectedCurrency() === 'GBP'" (click)="setCurrency('GBP')">GBP (£)</button>
+          </div>
+          <p class="mobile-concierge-note">Concierge Email: concierge@khamis-couture.example</p>
+        </div>
+
+      </div>
+    </div>
+  }
+
+  <!-- ========================================================================
+       MODAL 3: QUICK VIEW & PRIVATE FITTING DIALOG
+       ======================================================================== -->
+  @if (quickViewProduct()) {
+    <div class="modal-backdrop" (click)="closeQuickView()">
+      <div class="quick-view-modal" (click)="$event.stopPropagation()" role="dialog" aria-modal="true" [attr.aria-label]="quickViewProduct()?.name">
+
+        <button type="button" class="modal-close-icon" (click)="closeQuickView()" aria-label="Close dialog">
+          &times;
+        </button>
+
+        <div class="quick-view-grid">
+
+          <!-- Left Image Gallery -->
+          <div class="quick-view-gallery">
+            <div class="gallery-main-img-wrap">
+              <img [src]="quickViewActiveImage() || quickViewProduct()?.imageUrl" [alt]="quickViewProduct()?.name" class="gallery-main-img" />
+            </div>
+            <!-- Thumbnails if additional images exist -->
+            @if (quickViewProduct()?.additionalImages?.length) {
+              <div class="gallery-thumbs-row">
+                <button
+                  type="button"
+                  class="thumb-btn"
+                  [class.active]="quickViewActiveImage() === quickViewProduct()?.imageUrl"
+                  (click)="selectQuickViewImage(quickViewProduct()!.imageUrl)">
+                  <img [src]="quickViewProduct()!.imageUrl" alt="Front angle" class="thumb-img" />
+                </button>
+                @for (img of quickViewProduct()!.additionalImages; track img) {
+                  <button
+                    type="button"
+                    class="thumb-btn"
+                    [class.active]="quickViewActiveImage() === img"
+                    (click)="selectQuickViewImage(img)">
+                    <img [src]="img" alt="Detail view" class="thumb-img" />
+                  </button>
+                }
+              </div>
+            }
+          </div>
+
+          <!-- Right Content & Action Tabs -->
+          <div class="quick-view-details">
+
+            <!-- Tab Switcher -->
+            <div class="dialog-tabs">
+              <button
+                type="button"
+                class="dialog-tab font-serif"
+                [class.active]="activeQuickViewTab() === 'details'"
+                (click)="activeQuickViewTab.set('details')">
+                Garment Architecture
+              </button>
+              <button
+                type="button"
+                class="dialog-tab font-serif"
+                [class.active]="activeQuickViewTab() === 'fitting'"
+                (click)="activeQuickViewTab.set('fitting')">
+                Salon Fitting Request
+              </button>
+            </div>
+
+            <!-- Tab 1: Product Specifications -->
+            @if (activeQuickViewTab() === 'details') {
+              <div class="tab-pane">
+                <div class="qv-meta-top">
+                  <span class="qv-edition font-serif">{{ quickViewProduct()?.edition }}</span>
+                  <span class="qv-division font-serif">{{ quickViewProduct()?.categoryLabel }}</span>
+                </div>
+                <h3 class="qv-title font-serif">{{ quickViewProduct()?.name }}</h3>
+                <p class="qv-price font-serif">{{ formatPrice(quickViewProduct()!.price) }}</p>
+
+                <p class="qv-desc">{{ quickViewProduct()?.description }}</p>
+
+                <div class="qv-specs-box">
+                  <h5 class="specs-title font-serif">Material &amp; Craftsmanship:</h5>
+                  <p class="specs-text">{{ quickViewProduct()?.material }}</p>
+                </div>
+
+                <!-- Size Selector -->
+                <div class="qv-selection-group">
+                  <div class="selector-header">
+                    <label class="selector-label font-serif">Select Size:</label>
+                    <button type="button" class="size-guide-btn" (click)="showToast('Bespoke measurement guide displayed.')">Size Guide</button>
+                  </div>
+                  <div class="size-options-grid">
+                    @for (s of quickViewProduct()?.sizes; track s) {
+                      <button
+                        type="button"
+                        class="size-pill-btn font-serif"
+                        [class.active]="quickViewSelectedSize() === s"
+                        (click)="quickViewSelectedSize.set(s)">
+                        {{ s }}
+                      </button>
+                    }
+                  </div>
+                </div>
+
+                <!-- Color Selection -->
+                <div class="qv-selection-group">
+                  <label class="selector-label font-serif">Color: <strong>{{ quickViewSelectedColor()?.name || quickViewProduct()?.colors?.[0]?.name }}</strong></label>
+                  <div class="color-options-row">
+                    @for (c of quickViewProduct()?.colors; track c.name) {
+                      <button
+                        type="button"
+                        class="color-circle-btn"
+                        [class.active]="quickViewSelectedColor()?.name === c.name"
+                        [style.background-color]="c.hex"
+                        (click)="quickViewSelectedColor.set(c)"
+                        [title]="c.name">
+                      </button>
+                    }
+                  </div>
+                </div>
+
+                <!-- Add to Bag CTA -->
+                <div class="qv-action-row">
+                  <button type="button" class="btn-luxury-primary w-full font-serif" (click)="addQuickViewToCart()">
+                    Add To Shopping Bag &bull; {{ formatPrice(quickViewProduct()!.price) }}
+                  </button>
+                  <button
+                    type="button"
+                    class="btn-luxury-secondary w-full mt-2 font-serif"
+                    (click)="activeQuickViewTab.set('fitting')">
+                    Request Salon Fitting
+                  </button>
+                </div>
+
+              </div>
+            }
+
+            <!-- Tab 2: Private Salon Fitting Form (Strictly No Real Phone or Real Address) -->
+            @if (activeQuickViewTab() === 'fitting') {
+              <div class="tab-pane">
+                <h4 class="fitting-tab-title font-serif">Reserve Atelier Consultation</h4>
+                <p class="fitting-tab-desc">
+                  Schedule a private appointment with our master tailors. No real phone numbers or residential addresses required. We coordinate strictly via confidential electronic correspondence.
+                </p>
+
+                <form class="fitting-form-inner" (ngSubmit)="submitFitting()">
+                  <div class="form-field">
+                    <label class="form-label font-serif">Full Name *</label>
+                    <input
+                      type="text"
+                      required
+                      placeholder="e.g. Julian Vance"
+                      class="form-input"
+                      [(ngModel)]="fittingData.fullName"
+                      name="fullName"
+                    />
+                  </div>
+
+                  <div class="form-field">
+                    <label class="form-label font-serif">Confidential Email Address *</label>
+                    <input
+                      type="email"
+                      required
+                      placeholder="e.g. client@example.com"
+                      class="form-input"
+                      [(ngModel)]="fittingData.email"
+                      name="email"
+                    />
+                  </div>
+
+                  <div class="form-field-row">
+                    <div class="form-field">
+                      <label class="form-label font-serif">Atelier Location</label>
+                      <select class="form-input" [(ngModel)]="fittingData.preferredCity" name="preferredCity">
+                        <option value="Paris">Paris &bull; Central Atelier</option>
+                        <option value="Geneva">Geneva &bull; Salon Privé</option>
+                        <option value="Tokyo">Tokyo &bull; Ginza Suite</option>
+                        <option value="New York">New York &bull; Madison Salon</option>
+                      </select>
+                    </div>
+
+                    <div class="form-field">
+                      <label class="form-label font-serif">Preferred Date</label>
+                      <input
+                        type="date"
+                        class="form-input"
+                        [(ngModel)]="fittingData.preferredDate"
+                        name="preferredDate"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="form-field">
+                    <label class="form-label font-serif">Bespoke Fit Notes (Optional)</label>
+                    <textarea
+                      rows="2"
+                      placeholder="Special silhouette requests, measurements, or preferred timing..."
+                      class="form-input"
+                      [(ngModel)]="fittingData.notes"
+                      name="notes">
+                    </textarea>
+                  </div>
+
+                  <div class="form-submit-row">
+                    <button type="submit" class="btn-luxury-primary w-full font-serif">
+                      Submit Confidential Fitting Request
+                    </button>
+                  </div>
+                </form>
+              </div>
+            }
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  }
+
+  <!-- ========================================================================
+       MODAL 4: LIVE SEARCH OVERLAY
+       ======================================================================== -->
+  @if (isSearchOpen()) {
+    <div class="search-overlay-backdrop" (click)="closeSearch()">
+      <div class="search-overlay-panel" (click)="$event.stopPropagation()" role="dialog" aria-modal="true" aria-label="Search Collection">
+
+        <div class="search-overlay-header">
+          <div class="search-bar-input-wrap">
+            <svg class="search-modal-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <circle cx="11" cy="11" r="8" stroke-width="2"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65" stroke-width="2"></line>
+            </svg>
+            <input
+              type="text"
+              placeholder="Search by silhouette, Japanese wool, faille silk, cashmere..."
+              class="search-main-input"
+              [ngModel]="searchQuery()"
+              (ngModelChange)="searchQuery.set($event)"
+              autofocus
+            />
+          </div>
+          <button type="button" class="drawer-close-btn" (click)="closeSearch()" aria-label="Close Search">
+            &times;
+          </button>
+        </div>
+
+        <!-- Quick filter tags -->
+        <div class="search-quick-tags">
+          <span class="quick-tag-label font-serif">Popular Searches:</span>
+          <button type="button" class="quick-tag-btn" (click)="searchQuery.set('coat')">Greatcoat</button>
+          <button type="button" class="quick-tag-btn" (click)="searchQuery.set('silk')">Faille Silk</button>
+          <button type="button" class="quick-tag-btn" (click)="searchQuery.set('leather')">Plisse Leather</button>
+          <button type="button" class="quick-tag-btn" (click)="searchQuery.set('gold')">Architectural Gold</button>
+          <button type="button" class="quick-tag-btn" (click)="searchQuery.set('runway')">Runway</button>
+        </div>
+
+        <!-- Live Results -->
+        <div class="search-results-list">
+          <h4 class="results-heading font-serif">Curated Results ({{ overlaySearchResults().length }})</h4>
+          <div class="results-cards-grid">
+            @for (p of overlaySearchResults(); track p.id) {
+              <div class="search-result-card" (click)="selectSearchResult(p)">
+                <img [src]="p.imageUrl" [alt]="p.name" class="search-result-img" />
+                <div class="search-result-info">
+                  <span class="search-res-cat font-serif">{{ p.categoryLabel }}</span>
+                  <h5 class="search-res-name font-serif">{{ p.name }}</h5>
+                  <p class="search-res-price">{{ formatPrice(p.price) }}</p>
+                </div>
+              </div>
+            }
+          </div>
+        </div>
+
+      </div>
+    </div>
+  }
+
+  <!-- ========================================================================
+       MODAL 5: ATELIER MANIFESTO
+       ======================================================================== -->
+  @if (isManifestoOpen()) {
+    <div class="modal-backdrop" (click)="closeManifesto()">
+      <div class="manifesto-modal-panel" (click)="$event.stopPropagation()" role="dialog" aria-modal="true" aria-label="Atelier Manifesto">
+        <button type="button" class="modal-close-icon" (click)="closeManifesto()" aria-label="Close dialog">
+          &times;
+        </button>
+
+        <span class="section-kicker font-serif">Maison Philosophy</span>
+        <h2 class="manifesto-headline font-serif">The Architecture of Silence</h2>
+        <div class="fine-hairline my-4"></div>
+
+        <div class="manifesto-body">
+          <p>
+            KHAMIS was founded on the radical premise that modern clothing is architectural volume interacting with time, daylight, and physical stride. We reject the ephemeral cycles of disposable fashion in favor of monolithic permanence.
+          </p>
+          <p>
+            Every piece in our Haute Couture and Ready-to-Wear collections is engineered in our Parisian atelier and hand-finished by master craftspeople in Geneva and Piedmont. We source exclusively uncompromised raw materials: double-faced cashmere woven in northern Italy, high-density raw Japanese wool faille, vegetable-tanned French calfskin, and 18-karat recycled golds.
+          </p>
+          <blockquote class="manifesto-quote font-serif">
+            &ldquo;Form is not decorated onto the silhouette; form is the silhouette itself, sculpted with mathematical discipline and fluid grace.&rdquo;
+          </blockquote>
+          <p>
+            All KHAMIS garments are produced in strict numbered limited runs to prevent overproduction and preserve rarity.
+          </p>
+        </div>
+
+        <div class="manifesto-footer">
+          <button type="button" class="btn-luxury-primary font-serif" (click)="closeManifesto(); setCategory('all', true)">
+            Explore The Collection
+          </button>
+        </div>
+      </div>
+    </div>
+  }
+
+  <!-- ========================================================================
+       MODAL 6: SIMULATED CHECKOUT CONFIRMATION
+       ======================================================================== -->
+  @if (isCheckoutSuccessOpen()) {
+    <div class="modal-backdrop" (click)="closeCheckoutSuccess()">
+      <div class="checkout-success-panel" (click)="$event.stopPropagation()" role="dialog" aria-modal="true">
+        <div class="success-icon-wrap">
+          <span class="checkmark font-serif">&check;</span>
+        </div>
+        <span class="section-kicker font-serif">Order Confirmed</span>
+        <h3 class="checkout-success-title font-serif">Thank You for Your Order</h3>
+        <p class="checkout-success-desc">
+          Your order has been transmitted directly to our Paris &bull; Geneva atelier. An encrypted confirmation dossier and white-glove tracking credentials have been dispatched to your confidential email.
+        </p>
+        <div class="order-ref-card">
+          <span class="ref-label font-serif">Confidential Archive Dossier:</span>
+          <span class="ref-code">#KHAMIS-2025-89241</span>
+        </div>
+        <button type="button" class="btn-luxury-primary w-full mt-6 font-serif" (click)="closeCheckoutSuccess()">
+          Return to Atelier
+        </button>
+      </div>
+    </div>
+  }
+
+  <!-- ========================================================================
+       MODAL 7: GENERAL FITTING MODAL
+       ======================================================================== -->
+  @if (isFittingModalOpen()) {
+    <div class="modal-backdrop" (click)="closeFittingModal()">
+      <div class="manifesto-modal-panel" (click)="$event.stopPropagation()" role="dialog" aria-modal="true" aria-label="Book Private Salon Fitting">
+        <button type="button" class="modal-close-icon" (click)="closeFittingModal()" aria-label="Close dialog">
+          &times;
+        </button>
+
+        <span class="section-kicker font-serif">Private Client Service</span>
+        <h2 class="manifesto-headline font-serif">Reserve Atelier Consultation</h2>
+        <p class="text-xs text-stoneGray mt-1">
+          Select your preferred atelier salon. No real phone numbers or residential addresses required.
+        </p>
+        <div class="fine-hairline my-4"></div>
+
+        <form class="fitting-form-inner" (ngSubmit)="submitFitting()">
+          <div class="form-field">
+            <label class="form-label font-serif">Full Name *</label>
+            <input
+              type="text"
+              required
+              placeholder="e.g. Julian Vance"
+              class="form-input"
+              [(ngModel)]="fittingData.fullName"
+              name="fullNameGen"
+            />
+          </div>
+
+          <div class="form-field">
+            <label class="form-label font-serif">Confidential Email Address *</label>
+            <input
+              type="email"
+              required
+              placeholder="e.g. client@example.com"
+              class="form-input"
+              [(ngModel)]="fittingData.email"
+              name="emailGen"
+            />
+          </div>
+
+          <div class="form-field-row">
+            <div class="form-field">
+              <label class="form-label font-serif">Atelier Location</label>
+              <select class="form-input" [(ngModel)]="fittingData.preferredCity" name="preferredCityGen">
+                <option value="Paris">Paris &bull; Central Atelier</option>
+                <option value="Geneva">Geneva &bull; Salon Privé</option>
+                <option value="Tokyo">Tokyo &bull; Ginza Suite</option>
+                <option value="New York">New York &bull; Madison Salon</option>
+              </select>
+            </div>
+
+            <div class="form-field">
+              <label class="form-label font-serif">Preferred Date</label>
+              <input
+                type="date"
+                class="form-input"
+                [(ngModel)]="fittingData.preferredDate"
+                name="preferredDateGen"
+              />
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label class="form-label font-serif">Bespoke Fit Notes (Optional)</label>
+            <textarea
+              rows="2"
+              placeholder="Special silhouette requests, garment of interest, or timing..."
+              class="form-input"
+              [(ngModel)]="fittingData.notes"
+              name="notesGen">
+            </textarea>
+          </div>
+
+          <div class="form-submit-row">
+            <button type="submit" class="btn-luxury-primary w-full font-serif">
+              Confirm Atelier Consultation Request
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  }
+
+  <!-- ========================================================================
+       FLOATING TOAST NOTIFICATION
+       ======================================================================== -->
+  @if (isToastVisible()) {
+    <div class="toast-notification-banner" role="status" aria-live="polite">
+      <span class="toast-indicator">&bull;</span>
+      <span class="toast-text font-serif">{{ toastMessage() }}</span>
+    </div>
+  }
+
+</div>
